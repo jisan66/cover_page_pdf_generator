@@ -26,10 +26,155 @@ class MyApp extends StatelessWidget {
             displayLarge: TextStyle(fontSize: 26, fontWeight: FontWeight.bold)),
         useMaterial3: false,
       ),
-      home: const MyHomePage(),
+      home: const InformationScreen(),
     );
   }
 }
+
+
+///-----------------------------------------------------------------------------------------------------
+
+
+class InformationScreen extends StatefulWidget {
+  const InformationScreen({super.key});
+
+  @override
+  State<InformationScreen> createState() => _InformationScreenState();
+}
+
+class _InformationScreenState extends State<InformationScreen> {
+  TextEditingController assignmentTitle = TextEditingController();
+  TextEditingController courseName = TextEditingController();
+  TextEditingController courseCode = TextEditingController();
+  TextEditingController submittedByName = TextEditingController();
+  TextEditingController submittedByLevel = TextEditingController();
+  TextEditingController submittedBySemester = TextEditingController();
+  TextEditingController submittedToName = TextEditingController();
+
+
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Information Screen"),
+      ),
+      body: Column(
+        children: [
+          TextFormField(
+            cursorColor: Colors.greenAccent,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(25)
+              ),
+              enabledBorder: const OutlineInputBorder(
+                borderSide: BorderSide(
+                   color: Colors.greenAccent,
+                  width: 3,
+                )
+              ),
+                focusedBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.greenAccent,
+                      width: 3,
+                    )
+                )
+            ),
+          ),
+          const SizedBox(height: 8,),
+          TextFormField(
+            cursorColor: Colors.greenAccent,
+            decoration: InputDecoration(
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25)
+                ),
+                enabledBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.greenAccent,
+                      width: 3,
+                    )
+                ),
+                focusedBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.greenAccent,
+                      width: 3,
+                    )
+                )
+            ),
+          ),
+          const SizedBox(height: 8,),
+          TextFormField(
+            cursorColor: Colors.greenAccent,
+            decoration: InputDecoration(
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25)
+                ),
+                enabledBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.greenAccent,
+                      width: 3,
+                    )
+                ),
+                focusedBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.greenAccent,
+                      width: 3,
+                    )
+                )
+            ),
+          ),
+          const SizedBox(height: 8,),
+          TextFormField(
+            cursorColor: Colors.greenAccent,
+            decoration: InputDecoration(
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25)
+                ),
+                enabledBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.greenAccent,
+                      width: 3,
+                    )
+                ),
+                focusedBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.greenAccent,
+                      width: 3,
+                    )
+                )
+            ),
+          ),
+          const SizedBox(height: 8,),
+          TextFormField(
+            cursorColor: Colors.greenAccent,
+            decoration: InputDecoration(
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25)
+                ),
+                enabledBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.greenAccent,
+                      width: 3,
+                    )
+                ),
+                focusedBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Colors.greenAccent,
+                      width: 3,
+                    )
+                )
+            ),
+          ),
+          const SizedBox(height: 16,),
+          MaterialButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (_)=> const MyHomePage()));})
+        ],
+      ),
+    );
+  }
+}
+
+
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -56,6 +201,10 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+
+  ///-----------------------------------------------------------------------------------------------------
+
+
   createPdf() async {
     var logo = (await rootBundle.load('assets/hstu.png')).buffer.asUint8List();
     final doc = pw.Document();
@@ -81,7 +230,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   pw.Text("Semester"),
                 ]),
                 pw.Column(children: [
-                  pw.Text("Submitted to"),
+                  pw.Text("Submitted to",style:  pw.TextStyle(color: PdfColor( 1,  2,   3))),
                   pw.Text("Name"),
                   pw.Text("Designation"),
                   pw.Text("Faculty of"),
@@ -107,24 +256,24 @@ class _MyHomePageState extends State<MyHomePage> {
 
 ///------------------------------------------------------------------------------------------
 
-class Invoice {
-  final String customer;
-  final String address;
-  final List<LineItem> items;
-
-  Invoice(this.customer, this.address, this.items);
-
-  double totalCost() {
-    return items.fold(
-        0, (previousValue, element) => previousValue + element.cost);
-  }
-}
-
-class LineItem {
-  final String description;
-  final double cost;
-
-  LineItem(this.description, this.cost);
-}
+// class Invoice {
+//   final String customer;
+//   final String address;
+//   final List<LineItem> items;
+//
+//   Invoice(this.customer, this.address, this.items);
+//
+//   double totalCost() {
+//     return items.fold(
+//         0, (previousValue, element) => previousValue + element.cost);
+//   }
+// }
+//
+// class LineItem {
+//   final String description;
+//   final double cost;
+//
+//   LineItem(this.description, this.cost);
+// }
 
 ///------------------------------------------------------------------------------------------
